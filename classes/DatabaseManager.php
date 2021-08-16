@@ -28,5 +28,10 @@ class DatabaseManager
         $dsn = "mysql:host=" . $this->host . ": dbname=" . $this->dbname;
         // username and password
         $this->connection = new PDO($dsn, $this->user, $this->password);
+
+        // set default connection settings: by default attribute is set to fetch, and return in an associative array
+        $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
+        return $this->connection;
     }
 }
