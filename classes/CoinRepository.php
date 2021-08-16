@@ -25,14 +25,13 @@ class CoinRepository
     // Get all
     public function get()
     {
-        // TODO: replace dummy data by real one
-        return [
-            ['name' => 'dummy one'],
-            ['name' => 'dummy two'],
-        ];
-
+        // replace dummy data by real one
         // We get the database connection first, so we can apply our queries with it
-        // return $this->databaseManager->connection-> (runYourQueryHere)
+        $sql = "SELECT * FROM coins";
+        $result = $this->databaseManager->connection->query($sql);
+
+        return $result;
+
     }
 
     public function update()
