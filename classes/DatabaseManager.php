@@ -23,10 +23,9 @@ class DatabaseManager
 
     public function connect() : PDO
     {
-        // PDO = PHP Data Objects
         // make the connection to the database
         // servername, database name
-        $dsn = "mysql:host=" . $this->host . ": dbname=" . $this->dbname;
+        $dsn = 'mysql:host=' . $this->host . ';dbname='. $this->dbname;
 
         // username and password
         $this->connection = new PDO($dsn, $this->user, $this->password);
