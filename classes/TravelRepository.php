@@ -1,7 +1,7 @@
 <?php
 
 // This class deals with queries for one type of data, allowing for easier reusage and retrieving all your queries. This technique is called the repository pattern.
-class CoinRepository
+class TravelRepository
 {
     private $databaseManager;
 
@@ -22,16 +22,12 @@ class CoinRepository
 
     }
 
-    // Get all
     public function get()
     {
         // replace dummy data by real one
-        // We get the database connection first, so we can apply our queries with it
-        $sql = "SELECT * FROM coins";
+        $sql = "SELECT * FROM travel_list";
         $result = $this->databaseManager->connection->query($sql);
-
         return $result;
-
     }
 
     public function update()
