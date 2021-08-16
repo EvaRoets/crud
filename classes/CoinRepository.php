@@ -1,7 +1,7 @@
 <?php
 
 // This class deals with queries for one type of data, allowing for easier reusage and retrieving all your queries. This technique is called the repository pattern.
-class CardRepository
+class CoinRepository
 {
     private $databaseManager;
 

@@ -11,15 +11,13 @@ error_reporting(E_ALL);
 // Load you classes
 require_once 'config.php';
 require_once 'classes/DatabaseManager.php';
-require_once 'classes/CardRepository.php';
+require_once 'classes/CoinRepository.php';
 
 $databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
 $databaseManager->connect();
 
-// This example is about a Pokémon card collection
-// Update the naming if you'd like to work with another collection
-$cardRepository = new CardRepository($databaseManager);
-$cards = $cardRepository->get();
+$coinRepository = new CoinRepository($databaseManager);
+$coins = $coinRepository->get();
 
 // Load your view
 // Tip: you can load this dynamically and based on a variable, if you want to load another view
