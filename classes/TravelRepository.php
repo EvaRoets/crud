@@ -28,7 +28,11 @@ class TravelRepository
         return $invalidFields;
     }
 
-    public function create()
+
+
+
+
+    public function create(string $activity, string $country, string $season, string $comments, bool $done) :void
     {
         if (isset($_POST['addTravelGoal']) && !empty($_POST['activity']) && !empty($_POST['country']) && !empty($_POST['done'])) {
             $activity = $_POST['activity'];

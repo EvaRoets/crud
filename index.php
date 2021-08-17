@@ -36,16 +36,13 @@ $databaseManager->connect();
 
 $travelRepository = new TravelRepository($databaseManager);
 
-if(isset($_POST['addTravelGoal']))
-{
-    $newTravelGoal = $travelRepository->create();
+if (isset($_POST['addTravelGoal'])) {
+    $newTravelGoal = $travelRepository->create("$activity", "$country", "$season", "$comments", bool $done);
 }
-if(isset($_POST['changeTravelGoal']))
-{
+if (isset($_POST['changeTravelGoal'])) {
     $changeTravelGoal = $travelRepository->update();
 }
-if(isset($_POST['deleteTravelGoal']))
-{
+if (isset($_POST['deleteTravelGoal'])) {
     $deleteTravelGoal = $travelRepository->delete();
 }
 
