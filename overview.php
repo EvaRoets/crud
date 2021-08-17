@@ -317,7 +317,7 @@
             <div class="buttonfield">
                 <!-- TODO add functionality-->
                 <!-- submit field entry button-->
-                <input type="submit" name="submit" value="Add to my travel goals" class="btn"/>
+                <input type="submit" name="addTravelGoal" value="Add to my travel goals" class="btn"/>
             </div>
             <div class="buttonfield">
                 <!-- TODO add functionality-->

@@ -12,21 +12,65 @@ class TravelRepository
 
     }
 
-    //TODO check if this need to be added or this is already there because of the database
-//        $this->activity;
-//        $this->country;
-//        $this->season;
-//        $this->comments;
-//        $this->done;
-
+    function validateFields()
+    {
+        // Create and return invalid fields array
+        $invalidFields = [];
+        if (empty($_POST["activity"])) {
+            array_push($invalidFields, "activity");
+        }
+        if (empty($_POST["country"])) {
+            array_push($invalidFields, "country");
+        }
+        if (empty($_POST["done"]) && empty($_POST["not done"])) {
+            array_push($invalidFields, "done");
+        }
+        return $invalidFields;
+    }
 
     public function create()
     {
-        // TODO add correct values
-        $sqlCreate = "INSERT INTO travel_list (activity, country, season, comments, done) VALUES ('value1', 'value2', 'value3','value4','value5');";
-        $result = $this->databaseManager->connection->query($sqlCreate);
-        return $result;
+        if (isset($_POST['addTravelGoal']) && !empty($_POST['activity']) && !empty($_POST['country']) && !empty($_POST['done'])) {
+            $activity = $_POST['activity'];
+            $country = $_POST['country'];
+            $season = $_POST['season'];
+            $comments = $_POST['comments'];
+            $done = $_POST['done'];
+
+            // TODO add correct checkbox values
+            $sqlCreate = "INSERT INTO travel_list (activity,country,season,comments,done) VALUES ('$activity','$country','$season','$comments','$done')";
+            $result = $this->databaseManager->connection->query($sqlCreate);
+
+            return [
+                "result" => $result,
+                "message" => "<div class='alert alert-success'>" . $travels->confirmationMsg() . "</div>"
+            ];
+
+        } else {
+            $invalidFields = validateFields();
+            if (!empty($invalidFields)) {
+                if (in_array("activity", $invalidFields)) {
+                    $errorMsg = "Whoops! Please fill out the activity you want to do.";
+                    $errorMsg .= "<br>";
+                }
+                if (in_array("country", $invalidFields)) {
+                    $errorMsg .= "Whoops! Please select a country.";
+                    $errorMsg .= "<br>";
+                }
+                //TODO verify how to check for unchecked or double checked boxes
+                if (in_array("done", $invalidFields)) {
+                    $errorMsg .= "Whoops! Please check one of the boxes.";
+                    $errorMsg .= "<br>";
+                }
+                // Display any empty or invalid data with corresponding error message
+                return [
+                    "travel" => null,
+                    "message" => "<div class='alert alert-danger'>" . $errorMsg . "</div>"
+                ];
+            }
+        }
     }
+
 
     // Get one
     public function find()

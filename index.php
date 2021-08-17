@@ -26,9 +26,6 @@ function whatIsHappening()
 
 whatIsHappening();
 
-// Enable sessions
-session_start();
-
 // Load you classes
 require_once 'config.php';
 require_once 'classes/DatabaseManager.php';
@@ -38,78 +35,17 @@ $databaseManager = new DatabaseManager($config['host'], $config['user'], $config
 $databaseManager->connect();
 
 $travelRepository = new TravelRepository($databaseManager);
+$newTravelGoal = $travelRepository->create();
 $travels = $travelRepository->get();
 
-function validateForm()
-{
-    // Create and return invalid fields array
-    $invalidFields = [];
-    if (empty($_POST["activity"])) {
-        array_push($invalidFields, "activity");
-    }
-    if (empty($_POST["country"])) {
-        array_push($invalidFields, "country");
-    }
-    if (empty($_POST["done"]) && empty($_POST["not done"])) {
-        array_push($invalidFields, "done");
-    }
-    return $invalidFields;
-}
-
-//TODO add parameters
-function handleForm()
-{
-    $invalidFields = validateForm();
-    if (!empty($invalidFields)) {
-        if (in_array("activity", $invalidFields)) {
-            $errorMsg = "Whoops! Please fill out the activity you want to do.";
-            $errorMsg .= "<br>";
-        }
-        if (in_array("country", $invalidFields)) {
-            $errorMsg .= "Whoops! Please select a country.";
-            $errorMsg .= "<br>";
-        }
-        //TODO verify how to check for unchecked or double checked boxes
-        if (in_array("done", $invalidFields)) {
-            $errorMsg .= "Whoops! Please check one of the boxes.";
-            $errorMsg .= "<br>";
-        }
-        // Display any empty or invalid data with corresponding error message
-        return [
-            "travel" => null,
-            "message" => "<div class='alert alert-danger'>" . $errorMsg . "</div>"
-        ];
-
-    } elseif (empty($invalidFields)) {
-        //TODO add loop through done checkbox
-
-        // Save data
-        $travel = new TravelRepository ($_POST["activity"], $_POST["country"], $_POST["season"], $_POST["comments"], $_POST["done"]);
 
 
 
-        // Save data in session on submit to keep it displayed after error message
-        $_SESSION["activity"] = $travel->get();
-        $_SESSION["country"] =
-        $_SESSION["season"] =
-        $_SESSION["comments"] = "";
-        $_SESSION["done"] = "";
 
-        // Return fields
-        return [
-            "travel" => $travel,
-            "message" => "<div class='alert alert-success'>" . $travel->confirmationMsg() . "</div>",
-        ];
-    }
-}
 
-$formSubmitted = !empty($_POST["activity"] && $_POST["country"] && $_POST["done"]);
-$confirmationMsg = [];
-if ($formSubmitted) {
-    $result = handleForm();
-    $confirmationMsg = $result["message"];
-    $order = $result["travel"];
-}
+
+
+
 
 
 
