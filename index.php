@@ -77,8 +77,25 @@ function handleForm()
             "message" => "<div class='alert alert-danger'>" . $errorMsg . "</div>"
         ];
 
-    } elseif (){
+    } elseif (empty($invalidFields)) {
+        // Loop through checkboxes
 
+
+        // Save data
+        $travel = new TravelRepository ($_POST["activity"], $_POST["country"], $_POST["season"], $_POST["comments"], $orderedProducts);
+
+        // Save data in session on submit to keep it displayed after error message
+        $_SESSION["activity"] = $travel->get();
+        $_SESSION["country"] = $travel->create();
+        $_SESSION["season"] = $travel;
+        $_SESSION["comments"] = "";
+        $_SESSION["done"] = "";
+
+        // Return fields
+        return [
+            "travel" => $travel,
+            "message" => "<div class='alert alert-success'>" . $travel->confirmationMsg() . "</div>",
+        ];
     }
 }
 

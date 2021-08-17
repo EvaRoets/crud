@@ -27,7 +27,6 @@ class TravelRepository
 
     public function get()
     {
-        // replace dummy data by real one
         $sql = "SELECT * FROM travel_list";
         $result = $this->databaseManager->connection->query($sql);
         return $result;
@@ -35,12 +34,17 @@ class TravelRepository
 
     public function update()
     {
-
+        //TODO complete condition (when user clicks change button?)
+        $sqlChange = "UPDATE travel_list SET activity = value1, country = value2, season = value3, comments = value4, done = value5 WHERE condition;";
+        $result = $this->databaseManager->connection->query($sqlChange);
+        return $result;
     }
 
     public function delete()
     {
-
+        $sqlDelete = "DELETE FROM travel_list WHERE id = '';";
+        $result = $this->databaseManager->connection->query($sqlDelete);
+        return $result;
     }
 
 }
