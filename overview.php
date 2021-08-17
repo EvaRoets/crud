@@ -17,19 +17,19 @@
     <?php endforeach; ?>
 </ul>
 
-<form>
-<!--    TODO Create a form containing all the relevant fields.-->
+<form action="" method="post" id="travelList" name="travelList">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="activity">Activity</label>
-            <input type="text" id="activity" name="activity" class="form-control" value="" placeholder="What do you want to do?"/>
+            <input type="text" id="activity" name="activity" class="form-control" value=""
+                   placeholder="What do you want to do?"/>
         </div>
         <div></div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="country">Country</label>
-            <select id="country" name="country" class="form-control"  placeholder="Where do you want to do it?">
+            <select id="country" name="country" class="form-control" placeholder="Where do you want to do it?">
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
                 <option value="Albania">Albania</option>
@@ -159,7 +159,8 @@
                 <option value="Lithuania">Lithuania</option>
                 <option value="Luxembourg">Luxembourg</option>
                 <option value="Macao">Macao</option>
-                <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>
+                <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of
+                </option>
                 <option value="Madagascar">Madagascar</option>
                 <option value="Malawi">Malawi</option>
                 <option value="Malaysia">Malaysia</option>
@@ -232,7 +233,9 @@
                 <option value="Solomon Islands">Solomon Islands</option>
                 <option value="Somalia">Somalia</option>
                 <option value="South Africa">South Africa</option>
-                <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich Islands</option>
+                <option value="South Georgia and The South Sandwich Islands">South Georgia and The South Sandwich
+                    Islands
+                </option>
                 <option value="Spain">Spain</option>
                 <option value="Sri Lanka">Sri Lanka</option>
                 <option value="Sudan">Sudan</option>
@@ -274,10 +277,9 @@
                 <option value="Yemen">Yemen</option>
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
-                <option value="others">I want to enter my own destination... </option>
+                <option value="others">I want to enter my own destination...</option>
             </select>
-
-<!--            TODO activate this option when it is clicked-->
+            <!--            TODO activate this option when it is clicked-->
             <input type="text" id="country" name="country" class="form-control" style='display:none'/>
         </div>
         <div></div>
@@ -285,14 +287,16 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="season">Season</label>
-            <input type="text" id="season" name="season" class="form-control" value="" placeholder="When do you want to do it?"/>
+            <input type="text" id="season" name="season" class="form-control" value=""
+                   placeholder="When do you want to do it?"/>
         </div>
         <div></div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="comments">Comments</label>
-            <input type="text" id="comments" name="comments" class="form-control" value="" placeholder="Anything else to add?"/>
+            <input type="text" id="comments" name="comments" class="form-control" value=""
+                   placeholder="Anything else to add?"/>
         </div>
         <div></div>
     </div>
@@ -302,14 +306,28 @@
             <label for="done">Did it!🥳</label><br>
             <input type="checkbox" id="not done" name="not done" value="not done">
             <label for="not done">On my wishlist 🌠</label><br>
-            <input type="submit" value="Submit">
 
         </div>
         <div></div>
     </div>
 
-<!--    TODO Save the field information as a new entry in the database once it is submitted.-->
-<!--    TODO optional validate data-->
+    <!--    TODO Save the field information as a new entry in the database once it is submitted.-->
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <div class="buttonfield">
+                <!-- submit field entry button-->
+                <input type="submit" name="submit" value="Add to my travel goals" class="btn"/>
+            </div>
+        </div>
+    </div>
+
+    <!--    TODO optional validate data-->
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <!-- display confirmation/error message-->
+        </div>
+    </div>
 </form>
 </body>
 </html>
