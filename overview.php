@@ -312,12 +312,15 @@
     </div>
 
     <!--    TODO Save the field information as a new entry in the database once it is submitted.-->
-
     <div class="form-row">
         <div class="form-group col-md-6">
             <div class="buttonfield">
                 <!-- submit field entry button-->
                 <input type="submit" name="submit" value="Add to my travel goals" class="btn"/>
+            </div>
+            <div class="buttonfield">
+                <!-- change field entry button-->
+                <input type="change" name="change" value="Change one of my travel goals" class="btn"/>
             </div>
         </div>
     </div>
