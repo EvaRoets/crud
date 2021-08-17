@@ -13,7 +13,10 @@ class TravelRepository
 
     public function create()
     {
-
+        // TODO add correct values
+        $sqlCreate = "INSERT INTO travel_list (activity, country, season, comments, done) VALUES ('value1', 'value2', 'value3','value4','value5');";
+        $result = $this->databaseManager->connection->query($sqlCreate);
+        return $result;
     }
 
     // Get one
