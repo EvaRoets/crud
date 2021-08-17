@@ -53,7 +53,34 @@ function validateForm()
     return $invalidFields;
 }
 
+//TODO add parameters
+function handleForm()
+{
+    $invalidFields = validateForm();
+    if (!empty($invalidFields)) {
+        if (in_array("activity", $invalidFields)) {
+            $errorMsg = "Please fill out the activity you want to do";
+            $errorMsg .= "<br>";
+        }
+        if (in_array("country", $invalidFields)) {
+            $errorMsg .= "Please select a country.";
+            $errorMsg .= "<br>";
+        }
+        //TODO verify how to check for unchecked or double checked boxes
+        if (in_array("done", $invalidFields)) {
+            $errorMsg .= "Please check one of the boxes.";
+            $errorMsg .= "<br>";
+        }
+        // Display any empty or invalid data with corresponding error message
+        return [
+            "travel" => null,
+            "message" => "<div class='alert alert-danger'>" . $errorMsg . "</div>"
+        ];
 
+    } elseif (){
+
+    }
+}
 
 
 // Load your view
