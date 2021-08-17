@@ -35,19 +35,21 @@ $databaseManager = new DatabaseManager($config['host'], $config['user'], $config
 $databaseManager->connect();
 
 $travelRepository = new TravelRepository($databaseManager);
-$newTravelGoal = $travelRepository->create();
+
+if(isset($_POST['addTravelGoal']))
+{
+    $newTravelGoal = $travelRepository->create();
+}
+if(isset($_POST['changeTravelGoal']))
+{
+    $changeTravelGoal = $travelRepository->update();
+}
+if(isset($_POST['deleteTravelGoal']))
+{
+    $deleteTravelGoal = $travelRepository->delete();
+}
+
 $travels = $travelRepository->get();
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Load your view

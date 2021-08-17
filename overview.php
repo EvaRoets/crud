@@ -314,15 +314,18 @@
     <!--    TODO Save the field information as a new entry in the database once it is submitted.-->
     <div class="form-row">
         <div class="form-group col-md-6">
-            <div class="buttonfield">
+            <div class="buttonfield1">
                 <!-- TODO add functionality-->
                 <!-- submit field entry button-->
-                <input type="submit" name="addTravelGoal" value="Add to my travel goals" class="btn"/>
+                <input type="submit" name="addTravelGoal" value="Add to my travel goals! 🎒" class="btn"/>
             </div>
-            <div class="buttonfield">
+            <div class="buttonfield2">
                 <!-- TODO add functionality-->
                 <!-- change field entry button-->
-                <input type="change" name="change" value="Change one of my travel goals" class="btn"/>
+                <input type="change" name="changeTravelGoal" value="Change ✏️" class="btn"/>
+                <!-- TODO add functionality-->
+                <!-- change field entry button-->
+                <input type="change" name="deleteTravelGoal" value="Delete ❌" class="btn"/>
             </div>
         </div>
     </div>
