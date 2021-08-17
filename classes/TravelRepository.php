@@ -9,7 +9,16 @@ class TravelRepository
     public function __construct(DatabaseManager $databaseManager)
     {
         $this->databaseManager = $databaseManager;
+
     }
+
+    //TODO check if this need to be added or this is already there because of the database
+//        $this->activity;
+//        $this->country;
+//        $this->season;
+//        $this->comments;
+//        $this->done;
+
 
     public function create()
     {
@@ -48,3 +57,4 @@ class TravelRepository
     }
 
 }
+

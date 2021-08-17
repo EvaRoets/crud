@@ -315,10 +315,12 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <div class="buttonfield">
+                <!-- TODO add functionality-->
                 <!-- submit field entry button-->
                 <input type="submit" name="submit" value="Add to my travel goals" class="btn"/>
             </div>
             <div class="buttonfield">
+                <!-- TODO add functionality-->
                 <!-- change field entry button-->
                 <input type="change" name="change" value="Change one of my travel goals" class="btn"/>
             </div>
@@ -329,6 +331,15 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <!-- display confirmation/error message-->
+            <?php if (!empty($confirmationMsg)) { ?>
+                <div class="<?php if ($confirmationMsg[$invalidFields]) {
+                    echo 'alert-danger';
+                } else {
+                    echo 'alert-success';
+                } ?>">
+                    <?= $confirmationMsg ?>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </form>

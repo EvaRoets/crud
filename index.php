@@ -26,6 +26,9 @@ function whatIsHappening()
 
 whatIsHappening();
 
+// Enable sessions
+session_start();
+
 // Load you classes
 require_once 'config.php';
 require_once 'classes/DatabaseManager.php';
@@ -59,16 +62,16 @@ function handleForm()
     $invalidFields = validateForm();
     if (!empty($invalidFields)) {
         if (in_array("activity", $invalidFields)) {
-            $errorMsg = "Please fill out the activity you want to do";
+            $errorMsg = "Whoops! Please fill out the activity you want to do.";
             $errorMsg .= "<br>";
         }
         if (in_array("country", $invalidFields)) {
-            $errorMsg .= "Please select a country.";
+            $errorMsg .= "Whoops! Please select a country.";
             $errorMsg .= "<br>";
         }
         //TODO verify how to check for unchecked or double checked boxes
         if (in_array("done", $invalidFields)) {
-            $errorMsg .= "Please check one of the boxes.";
+            $errorMsg .= "Whoops! Please check one of the boxes.";
             $errorMsg .= "<br>";
         }
         // Display any empty or invalid data with corresponding error message
@@ -78,16 +81,17 @@ function handleForm()
         ];
 
     } elseif (empty($invalidFields)) {
-        // Loop through checkboxes
-
+        //TODO add loop through done checkbox
 
         // Save data
-        $travel = new TravelRepository ($_POST["activity"], $_POST["country"], $_POST["season"], $_POST["comments"], $orderedProducts);
+        $travel = new TravelRepository ($_POST["activity"], $_POST["country"], $_POST["season"], $_POST["comments"], $_POST["done"]);
+
+
 
         // Save data in session on submit to keep it displayed after error message
         $_SESSION["activity"] = $travel->get();
-        $_SESSION["country"] = $travel->create();
-        $_SESSION["season"] = $travel;
+        $_SESSION["country"] =
+        $_SESSION["season"] =
         $_SESSION["comments"] = "";
         $_SESSION["done"] = "";
 
@@ -98,6 +102,16 @@ function handleForm()
         ];
     }
 }
+
+$formSubmitted = !empty($_POST["activity"] && $_POST["country"] && $_POST["done"]);
+$confirmationMsg = [];
+if ($formSubmitted) {
+    $result = handleForm();
+    $confirmationMsg = $result["message"];
+    $order = $result["travel"];
+}
+
+
 
 
 // Load your view
