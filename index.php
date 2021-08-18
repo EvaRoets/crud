@@ -34,6 +34,7 @@ require_once 'classes/TravelRepository.php';
 $databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
 $databaseManager->connect();
 
+
 $travelRepository = new TravelRepository($databaseManager);
 
 if (isset($_POST['addTravelGoal'])) {

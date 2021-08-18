@@ -18,18 +18,17 @@
 </ul>
 
 <form action="" method="post" id="travelList" name="travelList">
-    <div class="form-row">
+    <div class="form-row justify-content-center">
         <div class="form-group col-md-6">
             <label for="activity">Activity</label>
-            <input type="text" id="activity" name="activity" class="form-control" value=""
-                   placeholder="What do you want to do?"/>
+            <input type="text" id="activity" name="activity" class="form-control" placeholder="What do you want to do?" required />
         </div>
         <div></div>
     </div>
-    <div class="form-row">
+    <div class="form-row justify-content-center">
         <div class="form-group col-md-6">
             <label for="country">Country</label>
-            <select id="country" name="country" class="form-control" placeholder="Where do you want to do it?">
+            <select id="country" name="country" class="form-control"  placeholder="Where do you want to do it?" required/>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
                 <option value="Albania">Albania</option>
@@ -278,13 +277,13 @@
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
                 <option value="others">I want to enter my own destination...</option>
-            </select>
+            </select requiredrequired>
             <!--            TODO activate this option when it is clicked-->
             <input type="text" id="country" name="country" class="form-control" style='display:none'/>
         </div>
         <div></div>
     </div>
-    <div class="form-row">
+    <div class="form-row justify-content-center">
         <div class="form-group col-md-6">
             <label for="season">Season</label>
             <input type="text" id="season" name="season" class="form-control" value=""
@@ -292,7 +291,7 @@
         </div>
         <div></div>
     </div>
-    <div class="form-row">
+    <div class="form-row justify-content-center">
         <div class="form-group col-md-6">
             <label for="comments">Comments</label>
             <input type="text" id="comments" name="comments" class="form-control" value=""
@@ -300,11 +299,11 @@
         </div>
         <div></div>
     </div>
-    <div class="form-row">
+    <div class="form-row justify-content-center">
         <div class="form-group col-md-6">
-            <input type="checkbox" id="done" name="done" class="form-control" value="done"/>
+            <input type="checkbox" id="done" name="done" class="form-control" value="done" required />
             <label for="done">Did it!🥳</label><br>
-            <input type="checkbox" id="not done" name="not done" value="not done">
+            <input type="checkbox" id="not done" name="not done" value="not done" required >
             <label for="not done">On my wishlist 🌠</label><br>
 
         </div>
@@ -312,20 +311,20 @@
     </div>
 
     <!--    TODO Save the field information as a new entry in the database once it is submitted.-->
-    <div class="form-row">
+    <div class="form-row justify-content-center">
         <div class="form-group col-md-6">
             <div class="buttonfield1">
                 <!-- TODO add functionality-->
                 <!-- submit field entry button-->
-                <input type="submit" name="addTravelGoal" value="Add to my travel goals! 🎒" class="btn"/>
+                <input type="submit" name="addTravelGoal" value="Add to my travel goals! 🎒" class="btn btn-primary"/>
             </div>
             <div class="buttonfield2">
                 <!-- TODO add functionality-->
                 <!-- change field entry button-->
-                <input type="change" name="changeTravelGoal" value="Change ✏️" class="btn"/>
+                <input type="change" name="changeTravelGoal" value="Change ✏️" class="btn btn-primary"/>
                 <!-- TODO add functionality-->
                 <!-- change field entry button-->
-                <input type="change" name="deleteTravelGoal" value="Delete ❌" class="btn"/>
+                <input type="change" name="deleteTravelGoal" value="Delete ❌" class="btn btn-primary"/>
             </div>
         </div>
     </div>

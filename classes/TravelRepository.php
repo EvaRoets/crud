@@ -29,11 +29,10 @@ class TravelRepository
     }
 
 
-
-
-
     public function create(string $activity, string $country, string $season, string $comments, bool $done) :void
     {
+
+        // check if required fields are filled out
         if (isset($_POST['addTravelGoal']) && !empty($_POST['activity']) && !empty($_POST['country']) && !empty($_POST['done'])) {
             $activity = $_POST['activity'];
             $country = $_POST['country'];
@@ -42,13 +41,16 @@ class TravelRepository
             $done = $_POST['done'];
 
             // TODO add correct checkbox values
-            $sqlCreate = "INSERT INTO travel_list (activity,country,season,comments,done) VALUES ('$activity','$country','$season','$comments','$done')";
+            $sqlCreate = "INSERT INTO travel_list (activity, country, season, comments, done) VALUES ('$activity','$country','$season','$comments','$done');";
             $result = $this->databaseManager->connection->query($sqlCreate);
 
-            return [
-                "result" => $result,
-                "message" => "<div class='alert alert-success'>" . $travels->confirmationMsg() . "</div>"
-            ];
+            //TODO remove test echo
+            echo "Your travel goal has been added!";
+
+//            return [
+//                "result" => $result,
+//                "message" => "<div class='alert alert-success'>" . $travels->confirmationMsg() . "</div>"
+//            ];
 
         } else {
             $invalidFields = validateFields();
@@ -66,11 +68,14 @@ class TravelRepository
                     $errorMsg .= "Whoops! Please check one of the boxes.";
                     $errorMsg .= "<br>";
                 }
+
+                //TODO remove test echo
+                echo "Please fill out the required fields"
                 // Display any empty or invalid data with corresponding error message
-                return [
-                    "travel" => null,
-                    "message" => "<div class='alert alert-danger'>" . $errorMsg . "</div>"
-                ];
+//                return [
+//                    "travel" => null,
+//                    "message" => "<div class='alert alert-danger'>" . $errorMsg . "</div>"
+//                ];
             }
         }
     }
@@ -82,10 +87,11 @@ class TravelRepository
 
     }
 
-    public function get()
+    public function get() : array
     {
         $sql = "SELECT * FROM travel_list";
-        $result = $this->databaseManager->connection->query($sql);
+        $output = $this->databaseManager->connection->query($sql);
+        $result = $output->fetchAll();
         return $result;
     }
 
