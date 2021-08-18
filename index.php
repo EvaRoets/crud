@@ -8,24 +8,6 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-function whatIsHappening()
-{
-    var_dump("<pre>");
-    echo '<h2>$_GET</h2>';
-    var_dump($_GET);
-    echo '<h2>$_POST</h2>';
-    var_dump($_POST);
-    echo '<h2>$_COOKIE</h2>';
-    var_dump($_COOKIE);
-    echo '<h2>$_SESSION</h2>';
-    var_dump($_SESSION);
-    echo '<h2>$_SERVER</h2>';
-    var_dump($_SERVER["REQUEST_URI"]);
-    var_dump("</pre>");
-}
-
-whatIsHappening();
-
 // Load you classes
 require_once 'config.php';
 require_once 'classes/DatabaseManager.php';
@@ -38,10 +20,10 @@ $databaseManager->connect();
 $travelRepository = new TravelRepository($databaseManager);
 
 if (isset($_POST['addTravelGoal'])) {
-    $newTravelGoal = $travelRepository->create("$activity", "$country", "$season", "$comments", bool $done);
+    $newTravelGoal = $travelRepository->create("$activity", "$country", "$season", "$comments",  "$done");
 }
 if (isset($_POST['changeTravelGoal'])) {
-    $changeTravelGoal = $travelRepository->update();
+    $changeTravelGoal = $travelRepository->update("$changeActivity", "$changeCountry", "changeSeason", "changeComments", "changeDone");
 }
 if (isset($_POST['deleteTravelGoal'])) {
     $deleteTravelGoal = $travelRepository->delete();

@@ -29,7 +29,7 @@ class TravelRepository
     }
 
 
-    public function create(string $activity, string $country, string $season, string $comments, bool $done) :void
+    public function create(string $activity, string $country, string $season, string $comments, string $done) :void
     {
 
         // check if required fields are filled out
@@ -95,9 +95,15 @@ class TravelRepository
         return $result;
     }
 
-    public function update()
+    public function update(string $changeActivity, string $changeCountry, string $changeSeason, string $changeComments, string $changeDone)
     {
-        //TODO complete condition (when user clicks change button?)
+        $changeActivity = $_POST['changeActivity'];
+        $changeCountry = $_POST['changeCountry'];
+        $changeSeason = $_POST['changeSeason'];
+        $changeComments = $_POST['changeComments'];
+        $changeDone = $_POST['changeDone'];
+
+
         $sqlChange = "UPDATE travel_list SET activity = value1, country = value2, season = value3, comments = value4, done = value5 WHERE condition;";
         $result = $this->databaseManager->connection->query($sqlChange);
         return $result;

@@ -326,7 +326,7 @@
                     <input type="change" name="changeTravelGoal" value="Change ✏️" class="btn btn-primary"/>
                     <!-- TODO add functionality-->
                     <!-- change field entry button-->
-                    <input type="change" name="deleteTravelGoal" value="Delete ❌" class="btn btn-primary"/>
+                    <input type="delete" name="deleteTravelGoal" value="Delete ❌" class="btn btn-primary"/>
                 </div>
             </div>
         </div>
