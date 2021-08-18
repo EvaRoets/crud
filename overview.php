@@ -18,17 +18,19 @@
 </ul>
 
 <form action="" method="post" id="travelList" name="travelList">
-    <div class="form-row justify-content-center">
-        <div class="form-group col-md-6">
-            <label for="activity">Activity</label>
-            <input type="text" id="activity" name="activity" class="form-control" placeholder="What do you want to do?" required />
+    <fieldset>
+        <legend>Add new travel goal</legend>
+        <div class="form-row justify-content-center">
+            <div class="form-group col-md-6">
+                <label for="activity">Activity</label>
+                <input type="text" id="activity" name="activity" class="form-control" placeholder="What do you want to do?" required />
+            </div>
+            <div></div>
         </div>
-        <div></div>
-    </div>
-    <div class="form-row justify-content-center">
-        <div class="form-group col-md-6">
-            <label for="country">Country</label>
-            <select id="country" name="country" class="form-control"  placeholder="Where do you want to do it?" required/>
+        <div class="form-row justify-content-center">
+            <div class="form-group col-md-6">
+                <label for="country">Country</label>
+                <select id="country" name="country" class="form-control"  placeholder="Where do you want to do it?" required/>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>
                 <option value="Albania">Albania</option>
@@ -277,73 +279,74 @@
                 <option value="Zambia">Zambia</option>
                 <option value="Zimbabwe">Zimbabwe</option>
                 <option value="others">I want to enter my own destination...</option>
-            </select requiredrequired>
-            <!--            TODO activate this option when it is clicked-->
-            <input type="text" id="country" name="country" class="form-control" style='display:none'/>
-        </div>
-        <div></div>
-    </div>
-    <div class="form-row justify-content-center">
-        <div class="form-group col-md-6">
-            <label for="season">Season</label>
-            <input type="text" id="season" name="season" class="form-control" value=""
-                   placeholder="When do you want to do it?"/>
-        </div>
-        <div></div>
-    </div>
-    <div class="form-row justify-content-center">
-        <div class="form-group col-md-6">
-            <label for="comments">Comments</label>
-            <input type="text" id="comments" name="comments" class="form-control" value=""
-                   placeholder="Anything else to add?"/>
-        </div>
-        <div></div>
-    </div>
-    <div class="form-row justify-content-center">
-        <div class="form-group col-md-6">
-            <input type="checkbox" id="done" name="done" class="form-control" value="done" required />
-            <label for="done">Did it!🥳</label><br>
-            <input type="checkbox" id="not done" name="not done" value="not done" required >
-            <label for="not done">On my wishlist 🌠</label><br>
-
-        </div>
-        <div></div>
-    </div>
-
-    <!--    TODO Save the field information as a new entry in the database once it is submitted.-->
-    <div class="form-row justify-content-center">
-        <div class="form-group col-md-6">
-            <div class="buttonfield1">
-                <!-- TODO add functionality-->
-                <!-- submit field entry button-->
-                <input type="submit" name="addTravelGoal" value="Add to my travel goals! 🎒" class="btn btn-primary"/>
+                </select requiredrequired>
+                <!--            TODO activate this option when it is clicked-->
+                <input type="text" id="country" name="country" class="form-control" style='display:none'/>
             </div>
-            <div class="buttonfield2">
-                <!-- TODO add functionality-->
-                <!-- change field entry button-->
-                <input type="change" name="changeTravelGoal" value="Change ✏️" class="btn btn-primary"/>
-                <!-- TODO add functionality-->
-                <!-- change field entry button-->
-                <input type="change" name="deleteTravelGoal" value="Delete ❌" class="btn btn-primary"/>
-            </div>
+            <div></div>
         </div>
-    </div>
+        <div class="form-row justify-content-center">
+            <div class="form-group col-md-6">
+                <label for="season">Season</label>
+                <input type="text" id="season" name="season" class="form-control" value=""
+                       placeholder="When do you want to do it?"/>
+            </div>
+            <div></div>
+        </div>
+        <div class="form-row justify-content-center">
+            <div class="form-group col-md-6">
+                <label for="comments">Comments</label>
+                <input type="text" id="comments" name="comments" class="form-control" value=""
+                       placeholder="Anything else to add?"/>
+            </div>
+            <div></div>
+        </div>
+        <div class="form-row justify-content-center">
+            <div class="form-group col-md-6">
+                <input type="checkbox" id="done" name="done" class="form-control" value="done" required />
+                <label for="done">Did it!🥳</label><br>
+                <input type="checkbox" id="not done" name="not done" value="not done" required >
+                <label for="not done">On my wishlist 🌠</label><br>
 
-    <!--    TODO optional validate data-->
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <!-- display confirmation/error message-->
-            <?php if (!empty($confirmationMsg)) { ?>
-                <div class="<?php if ($confirmationMsg[$invalidFields]) {
-                    echo 'alert-danger';
-                } else {
-                    echo 'alert-success';
-                } ?>">
-                    <?= $confirmationMsg ?>
+            </div>
+            <div></div>
+        </div>
+
+        <!--    TODO Save the field information as a new entry in the database once it is submitted.-->
+        <div class="form-row justify-content-center">
+            <div class="form-group col-md-6">
+                <div class="buttonfield1">
+                    <!-- TODO add functionality-->
+                    <!-- submit field entry button-->
+                    <input type="submit" name="addTravelGoal" value="Add to my travel goals! 🎒" class="btn btn-primary"/>
                 </div>
-            <?php } ?>
+                <div class="buttonfield2">
+                    <!-- TODO add functionality-->
+                    <!-- change field entry button-->
+                    <input type="change" name="changeTravelGoal" value="Change ✏️" class="btn btn-primary"/>
+                    <!-- TODO add functionality-->
+                    <!-- change field entry button-->
+                    <input type="change" name="deleteTravelGoal" value="Delete ❌" class="btn btn-primary"/>
+                </div>
+            </div>
         </div>
-    </div>
+
+        <!--    TODO optional validate data-->
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <!-- display confirmation/error message-->
+                <?php if (!empty($confirmationMsg)) { ?>
+                    <div class="<?php if ($confirmationMsg[$invalidFields]) {
+                        echo 'alert-danger';
+                    } else {
+                        echo 'alert-success';
+                    } ?>">
+                        <?= $confirmationMsg ?>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </fieldset>
 </form>
 </body>
 </html>
