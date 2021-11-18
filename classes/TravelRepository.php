@@ -12,7 +12,7 @@ class TravelRepository
 
     }
 
-    function validateFields()
+    public function validateFields()
     {
         // Create and return invalid fields array
         $invalidFields = [];
@@ -28,10 +28,8 @@ class TravelRepository
         return $invalidFields;
     }
 
-
     public function create(string $activity, string $country, string $season, string $comments, string $done) :void
     {
-
         // check if required fields are filled out
         if (isset($_POST['addTravelGoal']) && !empty($_POST['activity']) && !empty($_POST['country']) && !empty($_POST['done'])) {
             $activity = $_POST['activity'];
@@ -40,7 +38,6 @@ class TravelRepository
             $comments = $_POST['comments'];
             $done = $_POST['done'];
 
-            // TODO add correct checkbox values
             $sqlCreate = "INSERT INTO travel_list (activity, country, season, comments, done) VALUES ('$activity','$country','$season','$comments','$done');";
             $result = $this->databaseManager->connection->query($sqlCreate);
 
@@ -70,7 +67,7 @@ class TravelRepository
                 }
 
                 //TODO remove test echo
-                echo "Please fill out the required fields"
+                echo "Please fill out the required fields";
                 // Display any empty or invalid data with corresponding error message
 //                return [
 //                    "travel" => null,
@@ -79,7 +76,6 @@ class TravelRepository
             }
         }
     }
-
 
     // Get one
     public function find()
@@ -95,7 +91,7 @@ class TravelRepository
         return $result;
     }
 
-    public function update(string $changeActivity, string $changeCountry, string $changeSeason, string $changeComments, string $changeDone)
+    public function update(string $changeActivity, string $changeCountry, string $changeSeason, string $changeComments, string $changeDone) :void
     {
         $changeActivity = $_POST['changeActivity'];
         $changeCountry = $_POST['changeCountry'];
@@ -111,7 +107,7 @@ class TravelRepository
 
     public function delete()
     {
-        $sqlDelete = "DELETE FROM travel_list WHERE id = '';";
+        $sqlDelete = "DELETE FROM travel_list WHERE activity = '{$_GET['delete']}';";
         $result = $this->databaseManager->connection->query($sqlDelete);
         return $result;
     }
